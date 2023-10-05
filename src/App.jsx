@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import bookLogo from './assets/books.png'
-import {Link, Routes, Route} from 'react-router-dom'
+import { Link, Routes, Route } from 'react-router-dom'
 
 import Login from './components/Login'
 import Register from './components/Register'
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <h1><img id='logo-image' src={bookLogo}/>Library App</h1>
+      <h1><img id='logo-image' src={bookLogo} />Library App</h1>
 
       <p>Complete the React components needed to allow users to browse a library catalog, check out books, review their account, and return books that they've finished reading.</p>
 
@@ -25,8 +25,9 @@ function App() {
 
       <div className="routes">
         <Routes>
-          <Route path='/login' element={<Login/>} />
+          <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          
         </Routes>
       </div>
     </>

@@ -22,7 +22,7 @@ export default function Register() {
                     firstname: firstName,
                     lastname: lastName,
                     email: email,
-                    password: password
+                    password: password 
                 })
             })
             const result = await response.json();
