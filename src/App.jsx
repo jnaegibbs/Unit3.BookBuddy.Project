@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import bookLogo from './assets/books.png'
+import {Link, Routes, Route} from 'react-router-dom'
+
+import Login from './components/Login'
+import Register from './components/Register'
 
 function App() {
   const [token, setToken] = useState(null)
@@ -13,6 +17,13 @@ function App() {
       <p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
 
       <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
+
+      <div className="routes">
+        <Routes>
+          <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </div>
     </>
   )
 }
