@@ -44,7 +44,7 @@ export default function Login() {
                     Password:{" "}
                     <input value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
-                <button disabled={error} type="submit">Login</button>
+                <button disabled={error} type="submit">Submit</button>
             </form>
 
 
