@@ -9,8 +9,8 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    async function loginSubmit() {
-        e.preventDefault();
+    async function loginSubmit(event) {
+        event.preventDefault();
 
         try {
             const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", {

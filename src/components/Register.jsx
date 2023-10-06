@@ -8,8 +8,8 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    async function registerSubmit(){
-        e.preventDefault();
+    async function registerSubmit(event){
+        event.preventDefault();
 
         try{
             const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register", {
@@ -49,11 +49,11 @@ export default function Register() {
             </label> <br/>
             <label>
                 Email: {" "}
-                <input value={email} onChange={(e)=>setEmail(e.target.event)}/>
+                <input value={email} onChange={(e)=>setEmail(e.target.value)}/>
             </label> <br/>
             <label>
                 Password: {" "}
-                <input value={password} onChange={(e)=>setPassword(e.target.event)}/>
+                <input value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </label> <br/>
 
             <button>Submit</button>
