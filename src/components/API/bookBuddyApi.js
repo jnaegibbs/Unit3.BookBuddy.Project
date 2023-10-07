@@ -54,6 +54,28 @@ const bookBuddyApi = createApi({
       },
     }),
 
+    // update book availability (checkout or not)
+    updateBookAvailability: builder.mutation({
+      query: (availabilityBoolean) => ({
+        url: "/api/books/:bookId",
+        method: "PATCH",
+        headers: {
+          "Authorization": `Bearer ${Token}`
+        },
+        body: availabilityBoolean
+      })
+    }),
+
+    //delete existing reservation (update book's availability)
+    deleteReservation: builder.mutation({
+      query: (reservationId) => ({
+        url: `/api/reservations/${reservationId}`,
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${Token}`
+        }
+      })
+    })
   
    
     
@@ -68,5 +90,6 @@ export const {
   useFetchUserQuery,
   useRegisterMutation,
   useLoginMutation,
- 
+  useDeleteReservationMutation,
+  useUpdateBookAvailabilityMutation, 
 } = bookBuddyApi;
