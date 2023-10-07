@@ -11,7 +11,7 @@ import { useFetchBooksQuery } from './API/bookBuddyApi';
 const Books = () => {
 
     const {books} = useParams()
-    const {data, error, isLoading } = useFetchBooksQuery(books); 
+    const {data, error, isLoading } = useFetchBooksQuery(); 
     console.log(data);
     const navigate = useNavigate();
     
