@@ -35,8 +35,9 @@ const Books = () => {
 
                     <TextField 
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search By Name"
                         onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
+                        style={{width:"40%",marginLeft:"30%",padding:"2%"}}
                     />
     
                 </label>

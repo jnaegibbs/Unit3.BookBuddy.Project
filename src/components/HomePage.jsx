@@ -13,7 +13,7 @@ import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
 const HomePage = () => {
    return (
     <>
-    <Container>
+    <Container style={{padding:0}}>
     <Stack spacing={2} direction="row" mt={5}>
     <AutoStoriesSharpIcon/>
     <Typography variant="h6"
@@ -26,7 +26,7 @@ const HomePage = () => {
               mt: 4,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 800,
+              fontWeight: 900,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -35,7 +35,7 @@ const HomePage = () => {
             Book Buddy
           </Typography>
 
-        <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction="row" style={{paddingLeft:"60%"}}>
         <Button variant="contained" >
             <Link to="/login">Log In</Link>
         </Button>
