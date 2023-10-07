@@ -56,8 +56,8 @@ const bookBuddyApi = createApi({
 
     // update book availability (checkout or not)
     updateBookAvailability: builder.mutation({
-      query: (availabilityBoolean) => ({
-        url: "/api/books/:bookId",
+      query: (bookId) => ({
+        url: `/api/books/${bookId}`,
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${Token}`
