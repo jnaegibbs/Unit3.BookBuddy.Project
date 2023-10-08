@@ -4,10 +4,13 @@
 
 import { React, useState } from 'react';
 import { useLoginMutation } from './API/bookBuddyApi';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("")
+    const navigate = useNavigate();
   
     const [login ] = useLoginMutation();
 
@@ -41,7 +44,7 @@ export default function Login() {
                 <button disabled={error} type="submit">Submit</button>
             </form>
 
-
+                <button onClick={() => navigate('/')}>Back</button>
 
         </>
     )

@@ -1,6 +1,8 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import {React, useState } from 'react';
 import {useRegisterMutation} from './API/bookBuddyApi'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Register() {
     const [firstName, setFirstName] = useState("");
@@ -8,6 +10,8 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
+    
 
     const [register] = useRegisterMutation();
 
@@ -52,6 +56,7 @@ export default function Register() {
             </label> <br/>
 
             <button>Submit</button>
+            <button onClick={() => navigate('/')}>Back</button>
 
         </form>
         </>
