@@ -2,51 +2,80 @@
 
 /* TODO - add your code to create a functional React component that renders a login form */
 
-import { React, useState } from 'react';
-import { useLoginMutation } from './API/bookBuddyApi';
-import { useNavigate } from 'react-router-dom';
+import { React, useState } from "react";
+import { useLoginMutation } from "./API/bookBuddyApi";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("")
-    const navigate = useNavigate();
-  
-    const [login ] = useLoginMutation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    async function loginSubmit(event) {
-        event.preventDefault();
+  const [login] = useLoginMutation();
 
-     const response = await login({
-        email:email,
-        password:password
-     })
+  async function loginSubmit(event) {
+    event.preventDefault();
 
-     console.log(response);
+    const response = await login({
+      email: email,
+      password: password,
+    });
 
-    }
+    console.log(response);
+  }
 
-    return (
-        <>
-            <h3>Login</h3>
+  return (
+    <>
+      <Box
+        component="form"
+        sx={{ m: 10, width: 500, maxWidth: "100%" }}
+        autoComplete="off"
+      >
+        <Typography variant="h5" color="primary" gutterBottom>
+          Login
+        </Typography>
 
-            {error && <p>Unable to login</p>}
+        {error && <p>Unable to login</p>}
 
-            <form method="POST" onSubmit={loginSubmit} >
-                <label>
-                    Email:{" "}
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} />
-                </label> <br/>
-                <label>
-                    Password:{" "}
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} />
-                </label> <br/>
-                <button disabled={error} type="submit">Submit</button>
-            </form>
+        <TextField
+          label="Email"
+          variant="filled"
+          fullWidth
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-                <button onClick={() => navigate('/')}>Back</button>
+        <br />
+        <br />
+        <TextField
+          label="Password"
+          variant="filled"
+          fullWidth
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <br />
+        <Button variant="contained" color="primary" onClick={loginSubmit}>
+          Submit
+        </Button>
 
-        </>
-    )
-
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/")}
+          style={{ float: "right" }}
+        >
+          Back
+        </Button>
+      </Box>
+    </>
+  );
 }
