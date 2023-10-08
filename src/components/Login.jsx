@@ -5,16 +5,26 @@
 import { React, useState } from "react";
 import { useLoginMutation } from "./API/bookBuddyApi";
 import { useNavigate } from "react-router-dom";
+import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {setToken} from "./API/tokenSlice"
+
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const token = useSelector(state => state.token)
+  console.log("TOKEN: ", token);
+  
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [login] = useLoginMutation();
 
@@ -27,7 +37,14 @@ export default function Login() {
     });
 
     console.log(response);
+    // dispatch(setToken({token:(response.token)}))
+    
+    navigate(("/Account"));
+
+
   }
+
+  
 
   return (
     <>
@@ -63,7 +80,7 @@ export default function Login() {
         />
         <br />
         <br />
-        <Button variant="contained" color="primary" onClick={loginSubmit}>
+        <Button variant="contained" color="primary" onClick= {loginSubmit}>
           Submit
         </Button>
 
