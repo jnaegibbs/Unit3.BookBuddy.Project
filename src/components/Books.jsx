@@ -36,12 +36,11 @@ const Books = () => {
 
             <div>
                 <label>
-
                     <TextField
                         type="text"
                         placeholder="Search"
                         onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
-                        style={{ marginLeft: "30%", width: "40%", padding: "2%" }}
+                        style={{ marginLeft: "10%", width: "40%", padding: "2%" }}
                     />
                 </label>
             </div>
@@ -53,15 +52,15 @@ const Books = () => {
                 <Grid
                     container
                     spacing={2}
-                    direction="row"
+                    columns={16}
+                    direction="column"
                     justify="flex-start"
                     alignItems="flex-start"
                 >
                     <Grid item xs={12} sm={6} md={3} key={data.bookId}>
-
                         {filteredBooks && filteredBooks.map((book) => (
                             <div>
-                                <Card sx={{ m: 10, border: 2, padding: 5, width: 300, maxWidth: "100%" }}>
+                                <Card sx={{ m: 10, padding: 5, width: 300, maxWidth: "100%" }}>
                                     <CardMedia
                                         component="img"
                                         alt={data.name}
@@ -83,7 +82,6 @@ const Books = () => {
                             </div>
 
                         ))}
-
                     </Grid>
                 </Grid>
             )

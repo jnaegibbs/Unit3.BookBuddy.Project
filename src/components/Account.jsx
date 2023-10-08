@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useFetchUserQuery } from "./API/bookBuddyApi";
 import { Box ,Button,Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Books from "./Books";
 
 const Account = () => {
   const token = useSelector((state) => state.token);
@@ -55,6 +56,7 @@ const Account = () => {
     
         
         </Box>
+        <Books/>
     </>
     )
 }
