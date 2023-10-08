@@ -6,11 +6,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
 const HomePage = () => {
+  const navigate = useNavigate();
    return (
     <>
     <Container style={{padding:0}}>
@@ -36,13 +37,16 @@ const HomePage = () => {
           </Typography>
 
         <Stack spacing={2} direction="row" style={{paddingLeft:"60%"}}>
-        <Button variant="contained" >
-            <Link to="/login">Log In</Link>
-        </Button>
+        <Button 
+            variant="contained" 
+            onClick={()=> navigate("/login")}>
+        Login</Button>
 
 
-        <Button variant="contained">
-            <Link to="/register">Register</Link>
+        <Button 
+          variant="contained"
+          onClick={()=> navigate("/register")}
+          >Register
         </Button>
         </Stack>
         </Stack>
