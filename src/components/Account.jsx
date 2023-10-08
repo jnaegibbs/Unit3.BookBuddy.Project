@@ -14,23 +14,27 @@ const Account = () => {
     isLoading && <p>Loading ...</p>;
   }
 
-  {
-    error && <p>Not Authorized User</p>;
-  }
+    {error && <p>Not Authorized User</p>}
 
-  return (
-    <>
-      {data && (
-        <div>
-          <h2>user details</h2>
-          <p>{data.firstname} </p>
-          <p>{data.lastname} </p>
-          <p>{data.email} </p>
-          <h2>checked out books here</h2>
-        </div>
-      )}
-    </>
-  );
-};
+
+
+     
+
+    
+    return (
+        <>
+
+        
+        <h2>user details</h2>
+       <p>{data.firstname} </p>
+       <p>{data.lastname} </p>
+        <p>{data.email} </p>
+        <h2>checked out books here</h2> 
+        
+        </>
+    )
+}
+
+
 
 export default Account;
