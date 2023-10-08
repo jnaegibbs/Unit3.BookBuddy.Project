@@ -9,17 +9,41 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { useUpdateBookAvailabilityMutation } from './API/bookBuddyApi';
+import {useSelector} from 'react-redux'
+
 const SingleBook = () => {
-    const bookId = useParams();
-    const { data, error, isLoading } = useFetchBookByIdQuery(bookId.id)
+    const {id:bookId} = useParams();
+    const { data, error, isLoading } = useFetchBookByIdQuery(bookId)
     const navigate = useNavigate();
-    console.log(bookId)
+    console.log(bookId);
+
+    const token = useSelector(state => state.token)
+    console.log("TOKEN: ", token);
+
+    const [updateBookAvailability] = useUpdateBookAvailabilityMutation();
+
+    async function checkOut () {
+        const available = true;
+        const response = await updateBookAvailability( bookId, available
+        );
+        console.log("book available", response)
+    }
+
+
+
+
+
+
     if (isLoading) {
         return <div>Loading...</div>
     }
     if (error) {
         return <div>Error: {error.message}</div>
     }
+
+
+
     return (
         <>
             <Button variant="contained" onClick={() => navigate('/')} style={{ marginTop: "40px" }}>Back to Home</Button>
@@ -39,7 +63,8 @@ const SingleBook = () => {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={() => navigate('/Account')}>Add to Cart</Button>
+                        onClick={() =>{checkOut()}}>Add to Cart</Button>
+                    
                 </Card>}
         </>
     )

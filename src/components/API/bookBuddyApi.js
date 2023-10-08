@@ -4,17 +4,18 @@ const bookBuddyApi = createApi({
   reducerPath: "bookBuddyApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://fsa-book-buddy-b6e748d1380d.herokuapp.com",
-    prepareHeaders: (headers,{getState}) => {
-      const token = getState().token;
-      headers.set("Content-Type", "application/json");
-    
-    if(token) {
-     
-      headers.set("Authorization", `Bearer ${token}`);
-    }
-    return headers
-  },
-  }),
+
+    prepareHeaders: (headers, {getState}) => {
+      headers.set("Content-Type", "application/json")
+      const {token} = getState();
+
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`)
+      }
+
+      return headers
+}}),
+
   endpoints: (builder) => ({
     // fetch All the books from Api
     fetchBooks: builder.query({
@@ -66,14 +67,16 @@ const bookBuddyApi = createApi({
 
     // update book availability (checkout or not)
     updateBookAvailability: builder.mutation({
-      query: (bookId) => ({
+      query: (bookId, available) => ({
         url: `/api/books/${bookId}`,
         method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: availabilityBoolean,
-      }),
+
+        // headers: {
+        //   Authorization: `Bearer ${token}`
+        // },
+        body: {available: available} 
+      })
+
     }),
 
     //delete existing reservation (update book's availability)
