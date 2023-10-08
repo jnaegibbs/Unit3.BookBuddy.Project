@@ -6,21 +6,32 @@ import { useFetchBooksQuery } from './API/bookBuddyApi';
 
 
 
+
 const Books = () => {
 
     
      const {data,error,isLoading} = useFetchBooksQuery();
-    
+      console.log(data)
     const [searchParam, setSearchParam] = useState("");
     const navigate = useNavigate();
+    const bookId =useParams();
+    if (isLoading) {
+		return <div>Loading...</div>;
+	}
+
+  if (error) {
+		return <div>Error: {error.message}</div>;
+	}
 
     const filteredBooks = searchParam
              ? data.books.filter((book)=>
              book.title.toLowerCase().includes(searchParam)
              )
              : data.books;
+            
     return(
         <div>
+            
             <div>
                 <label>
 
@@ -36,10 +47,10 @@ const Books = () => {
             {error ? (
                 <p>{error}</p>
             ) : (
-                <ul>{console.log(filteredBooks)}
+                <ul>
                     {filteredBooks && filteredBooks.map((book) => (
                         <li key={book.id}>{book.title}
-                            <button onClick={() => navigate(`/books/${book.id}`)}>More Info</button>
+                             <button onClick={() => navigate(`/books/${book.id}`)}>More Info</button> 
                         <img src={book.coverimage} />
                         </li>
                         ))}
