@@ -23,13 +23,18 @@ const Account = () => {
     
     return (
         <>
-
+        {data && (
+        <div>
+          <h2>user details</h2>
+          <p>{data.firstname} </p>
+          <p>{data.lastname} </p>
+          <p>{data.email} </p>
+          <h2>checked out books here</h2>
+        </div>
+      )}
         
-        <h2>user details</h2>
-       <p>{data.firstname} </p>
-       <p>{data.lastname} </p>
-        <p>{data.email} </p>
-        <h2>checked out books here</h2> 
+
+    
         
         </>
     )
