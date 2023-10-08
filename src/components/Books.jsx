@@ -76,7 +76,9 @@ const Books = () => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => navigate('/Account')}>Add to Cart</Button>
+                                        onClick={() => navigate('/Account') }
+                                        style={{float:"right"}}>Add to Cart</Button>
+                                       
                                 </Card>
                             </div>
 
