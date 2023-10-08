@@ -41,7 +41,7 @@ const Account = () => {
           <Typography variant="h5" color="primary" gutterBottom>
           Checked out Books here
          </Typography>
-          {data.books == null ? (
+          {data.books !== null ? (
             data.books.map((book) => <Typography variant="h6">{book.title}</Typography>)
           ) : (
             <Typography variant="h6"> No Books Found</Typography>
