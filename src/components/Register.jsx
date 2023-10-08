@@ -3,6 +3,10 @@ import {React, useState } from 'react';
 import {useRegisterMutation} from './API/bookBuddyApi'
 import { useNavigate } from 'react-router-dom';
 
+import {TextField} from "@mui/material/";
+import {Box} from "@mui/material/";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material"
 
 export default function Register() {
     const [firstName, setFirstName] = useState("");
@@ -34,31 +38,75 @@ export default function Register() {
 
     return (
         <>
-        <h3>Register</h3>
+    
         {error && <p>Unable to register</p>}
 
-        <form method="POST" onSubmit={registerSubmit}>
-            <label>
-                First Name: {" "}
-                <input value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
-            </label> <br/>
-            <label>
-                Last Name: {" "}
-                <input value={lastName} onChange={(e)=>setLastName(e.target.value)}/>
-            </label> <br/>
-            <label>
-                Email: {" "}
-                <input value={email} onChange={(e)=>setEmail(e.target.value)}/>
-            </label> <br/>
-            <label>
-                Password: {" "}
-                <input value={password} onChange={(e)=>setPassword(e.target.value)}/>
-            </label> <br/>
+        <Box component="form"
+        sx={{ m: 10, width: 500, maxWidth: "100%" }}
+        autoComplete="off">
+        
+        <Typography variant="h5" color="primary" gutterBottom>
+          Register
+        </Typography>
+            
+            
+        <TextField label="First Name"
+          variant="filled"
+          fullWidth
+          required
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+           />
+                
+         <br/>
+         <br/>
 
-            <button>Submit</button>
-            <button onClick={() => navigate('/')}>Back</button>
+         <TextField label="Last Name"
+          variant="filled"
+          fullWidth
+          required
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+           />
+        
+        <br />
+        <br />
+            
+        <TextField label="Email"
+          variant="filled"
+          fullWidth
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+           />
+        
+        <br />
+        <br />
 
-        </form>
+        <TextField label="Password"
+          variant="filled"
+          fullWidth
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+           />
+        <br />
+        <br />
+
+        <Button variant="contained" color="primary" onClick={registerSubmit}>
+          Submit
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/")}
+          style={{ float: "right" }}
+          >
+          Back
+        </Button>
+
+        </Box>
         </>
     )
 }

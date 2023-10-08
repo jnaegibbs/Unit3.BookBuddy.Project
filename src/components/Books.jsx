@@ -67,7 +67,10 @@ const Books = () => {
                                 variant="contained"
                                 color="primary"
                                 onClick={() => navigate(`/books/${book.id}`)}>More Info</Button>
-                          
+                                <Button 
+                                variant="contained"
+                                color="primary"
+                                onClick={()=> navigate('/Account')}>Add to Cart</Button>
                     </div>
                        ))}
                 </>
