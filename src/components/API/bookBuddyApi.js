@@ -24,7 +24,14 @@ const bookBuddyApi = createApi({
 
     // fetch the logged in user details
     fetchUser: builder.query({
-      query: () => "/api/users/me",
+      query: (token) => ({
+        url: "/api/users/me",
+        // method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+
+      })
     }),
 
     // user registration
@@ -60,7 +67,7 @@ const bookBuddyApi = createApi({
         url: `/api/books/${bookId}`,
         method: "PATCH",
         headers: {
-          "Authorization": `Bearer ${Token}`
+          "Authorization": `Bearer ${token}`
         },
         body: availabilityBoolean
       })
@@ -72,7 +79,7 @@ const bookBuddyApi = createApi({
         url: `/api/reservations/${reservationId}`,
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${Token}`
+          "Authorization": `Bearer ${token}`
         }
       })
     })

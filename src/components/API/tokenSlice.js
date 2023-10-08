@@ -22,10 +22,10 @@ const tokenSlice = createSlice({
             (state,{payload})=> payload.token
         );
 
-        builder.addMatcher(
-            bookBuddyApi.endpoints.fetchUser.matchFulfilled,
-            (state,{payload})=>payload.token
-        );
+        // builder.addMatcher(
+        //     bookBuddyApi.endpoints.fetchUser.matchFulfilled,
+        //     (state,{payload})=>payload.token
+        // );
 
        
     }
