@@ -12,14 +12,16 @@ export default function Register() {
     const [register] = useRegisterMutation();
 
     async function registerSubmit(event){
-        // event.preventDefault();
+        event.preventDefault();
 
-        // register({firstname: firstName, 
-        //         lastname: lastName,
-        //         email: email, 
-        //         password: password});
+        const response = await register({firstname: firstName, 
+                lastname: lastName,
+                email: email, 
+                password: password});
+
+                console.log(response);
         
-        // {error && <p>unable to perform submission</p>}
+         {error && <p>unable to perform submission</p>}
    
 
         
