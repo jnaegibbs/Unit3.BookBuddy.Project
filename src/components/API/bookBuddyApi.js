@@ -4,6 +4,7 @@ const bookBuddyApi = createApi({
   reducerPath: "bookBuddyApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://fsa-book-buddy-b6e748d1380d.herokuapp.com",
+
     prepareHeaders: (headers, {getState}) => {
       headers.set("Content-Type", "application/json")
       const {token} = getState();
@@ -14,6 +15,7 @@ const bookBuddyApi = createApi({
 
       return headers
 }}),
+
   endpoints: (builder) => ({
     // fetch All the books from Api
     fetchBooks: builder.query({
@@ -31,14 +33,9 @@ const bookBuddyApi = createApi({
 
     // fetch the logged in user details
     fetchUser: builder.query({
-      query: (token) => ({
+      query: () => ({
         url: "/api/users/me",
-        // method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-
-      })
+      }),
     }),
 
     // user registration
@@ -73,11 +70,13 @@ const bookBuddyApi = createApi({
       query: (bookId, available) => ({
         url: `/api/books/${bookId}`,
         method: "PATCH",
+
         // headers: {
         //   Authorization: `Bearer ${token}`
         // },
         body: {available: available} 
       })
+
     }),
 
     //delete existing reservation (update book's availability)
@@ -86,13 +85,10 @@ const bookBuddyApi = createApi({
         url: `/api/reservations/${reservationId}`,
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-    })
-  
-   
-    
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
   }),
 });
 
@@ -105,5 +101,5 @@ export const {
   useRegisterMutation,
   useLoginMutation,
   useDeleteReservationMutation,
-  useUpdateBookAvailabilityMutation, 
+  useUpdateBookAvailabilityMutation,
 } = bookBuddyApi;

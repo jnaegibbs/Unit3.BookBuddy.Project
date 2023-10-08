@@ -19,12 +19,13 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success,setSuccess] = useState("");
 
   const token = useSelector(state => state.token)
   console.log("TOKEN: ", token);
   
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
 
   const [login] = useLoginMutation();
 
@@ -37,7 +38,7 @@ export default function Login() {
     });
 
     console.log(response);
-    // dispatch(setToken({token:(response.token)}))
+    setSuccess(response.message)
     
     navigate(("/Account"));
 
@@ -55,10 +56,12 @@ export default function Login() {
       >
         <Typography variant="h5" color="primary" gutterBottom>
           Login
+          {success && <p>{success}</p>}
         </Typography>
 
         {error && <p>Unable to login</p>}
-
+       
+         
         <TextField
           label="Email"
           variant="filled"
