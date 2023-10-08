@@ -16,13 +16,16 @@ const Account = () => {
     isLoading && <p>Loading ...</p>;
   }
 
-  {
-    error && <p>Not Authorized User</p>;
-  }
+    {error && <p>Not Authorized User</p>}
 
-  return (
-    <>
-     <Button variant="contained" onClick={()=>navigate('/')} style={{margin:"2% 5% "}}>Back</Button>
+
+
+     
+
+    
+    return (
+        <>
+       <Button variant="contained" onClick={()=>navigate('/')} style={{margin:"2% 5% "}}>Back</Button>
     <Box sx={{ m: 10, width: 500, maxWidth: "100%",border:"1px solid gray",padding:"20px",borderRadius:"10px" }}>
        {token == null && <Typography variant="h5">Please Sign In for Details</Typography>}
       {data && (
@@ -47,9 +50,15 @@ const Account = () => {
           )}
         </div>
       )}
-    </Box>
+        
+
+    
+        
+        </Box>
     </>
-  );
-};
+    )
+}
+
+
 
 export default Account;
