@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Account from './components/Account'
 
 function App() {
-  const [token, setToken] = useState(null)
   
 
   return (
