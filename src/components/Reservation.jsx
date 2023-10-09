@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useFetchReservationQuery} from './API/bookBuddyApi';
+import Button from '@mui/material/Button';
 
 import {useSelector} from 'react-redux';
 import { useNavigate } from "react-router-dom";
@@ -37,14 +38,16 @@ const token = useSelector(state => state.token)
        {data ? (data.reservation.map((booksObj) => {
         return (
            <div>
-         <b>Title:</b> {booksObj.title} {<br/>}
-         <b>Author:</b> {booksObj.author} {<br/>}
+            <br/>
+         <b>Title:</b> {booksObj.title} <br/>
+         <b>Author:</b> {booksObj.author} <br/> 
          
-         <button onClick={()=>navigate(`/Returnbook/${booksObj.id}`)}>Return Book</button>
+         <Button variant="contained" color="primary" 
+         onClick={()=>navigate(`/Returnbook/${booksObj.id}`)}>Return Book</Button>
             </div> )})): (
                 <p>error</p>
             )}
-            
+        
        
             
     

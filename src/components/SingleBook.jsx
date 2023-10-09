@@ -24,7 +24,7 @@ const SingleBook = () => {
     const [updateBookAvailability] = useUpdateBookAvailabilityMutation();
 
     async function checkOut () {
-        const available = true;
+        const available = false;
         const response = await updateBookAvailability( bookId, available
         );
         console.log("book available", response)
@@ -66,6 +66,7 @@ const SingleBook = () => {
                         color="primary"
                         onClick={() =>{checkOut()}}>Check Out</Button>
                     }
+                    
                     
                 </Card>}
         </>

@@ -2,6 +2,8 @@ import {React} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDeleteReservationMutation } from './API/bookBuddyApi';
 import {useSelector} from 'react-redux';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 export default function Returnbook(){
 const token = useSelector(state => state.token)
@@ -21,8 +23,12 @@ const token = useSelector(state => state.token)
 
     return (
         <>
-        <p>Are you sure you would like to return reservation: {reservationId}?</p>
-        <button onClick={deleteCheckOut}>YES, PROCEED</button>
+        <Typography variant="h6">
+          Are you sure you would like to return reservation: {reservationId}?
+          </Typography> <br />
+        <Button variant="contained" color="primary" onClick={deleteCheckOut}>YES, PROCEED</Button>
+
+      
         
         </>
     )
