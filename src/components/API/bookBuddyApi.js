@@ -28,7 +28,7 @@ const bookBuddyApi = createApi({
     }),
     // fetch the user checked out books
     fetchReservation: builder.query({
-      query: () => "/reservation",
+      query: () => "/api/reservations",
     }),
 
     // fetch the logged in user details
@@ -84,9 +84,7 @@ const bookBuddyApi = createApi({
       query: (reservationId) => ({
         url: `/api/reservations/${reservationId}`,
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        
       }),
     }),
   }),
