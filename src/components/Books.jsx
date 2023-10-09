@@ -82,11 +82,11 @@ const Books = () => {
                                         variant="contained"
                                         color="primary"
                                         onClick={() => navigate(`/books/${book.id}`)}>More Info</Button>
-                                    <Button
+                                    {/* <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={() => navigate('/Account') }
-                                        style={{float:"right"}}>Add to Cart</Button>
+                                        style={{float:"right"}}>Add to Cart</Button> */}
                                        
                                 </Card>
                             </div>
