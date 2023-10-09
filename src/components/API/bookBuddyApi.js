@@ -28,7 +28,7 @@ const bookBuddyApi = createApi({
     }),
     // fetch the user checked out books
     fetchReservation: builder.query({
-      query: () => "/reservation",
+      query: () => "/api/reservations",
     }),
 
     // fetch the logged in user details
