@@ -22,7 +22,7 @@ const token = useSelector(state => state.token)
     return (
         <>
         <p>Are you sure you would like to return reservation: {reservationId}?</p>
-        <button onClick={deleteCheckOut()}>YES, PROCEED</button>
+        <button onClick={deleteCheckOut}>YES, PROCEED</button>
         
         </>
     )
