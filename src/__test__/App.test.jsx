@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByTestId } from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
 import Books from "../components/Books";
 import SingleBook from "../components/SingleBook";
@@ -17,6 +17,7 @@ describe("<Books/>", () => {
     test("renders the Books component", () => {
         const books = render(<Books/>)
         expect(books).not.toBe(null);
+    });
     
     it ("contains a more info button", () => {
         const books = render(<Books/>)
@@ -31,7 +32,7 @@ describe("<Books/>", () => {
     });
 
     });
-});
+
 
 describe("<SingleBook/>", () => {
     test("renders the SingleBook component", () => {
@@ -56,6 +57,7 @@ describe("<Login/>", () => {
     test("renders the Login component", () => {
         const login = render(<Login/>)
         expect(login).not.toBe(null);
+    });
 
     it("contains a submit button", () => {
         const login = render(<Login/>)
@@ -63,12 +65,13 @@ describe("<Login/>", () => {
         expect(button).toHaveTextContent("SUBMIT")
     });
     })
-});
+
 
 describe("<HomePage/>", () => {
     test("renders the HomePage component", () => {
         const homepage = render(<HomePage/>)
         expect(homepage).not.toBe(null)
+    });
 
     it("contains a login button", () => {
         const homepage = render(<HomePage/>)
@@ -79,8 +82,7 @@ describe("<HomePage/>", () => {
         //ByTestId find by data-testid attribute. Add data-testid to login component. 
         const loginComponent = getByTestId("login-component")
         expect(loginComponent).toBeInTheDocument()
-
-
+    });
 
     it("contains a register button", () => {
         const homepage = render(<HomePage/>)
@@ -92,8 +94,8 @@ describe("<HomePage/>", () => {
         const registerComponent =getByTestId("register-component")
         expect(registerComponent).toBeInTheDocument()
 
-    })
+    });
 
     })
-    })
-})
+   
+
