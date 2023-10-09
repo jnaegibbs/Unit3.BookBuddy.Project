@@ -48,7 +48,7 @@ const SingleBook = () => {
         <>
             <Button variant="contained" onClick={() => navigate('/')} style={{ marginTop: "40px" }}>Back to Home</Button>
             {data &&
-                <Card sx={{ m: 10, border: 2, padding: 5, width: 400, maxWidth: "100%" }}>
+                <Card sx={{ m: 10, padding: 5, width: 400, maxWidth: "100%" }}>
                     <CardMedia
                         component="img"
                         alt={data.name}

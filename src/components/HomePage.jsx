@@ -9,24 +9,19 @@ import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const HomePage = () => {
   const navigate = useNavigate();
    return (
     <>
-    <Container style={{padding:0}}>
+    <Container sx={{marginLeft: "8%"}}>
     <Stack spacing={2} direction="row" mt={5}>
     <AutoStoriesSharpIcon/>
-    <Typography variant="h6"
+    <Typography variant="h4"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
-            
-              mr: 2,
-              mt: 4,
+              marginLeft: "10%",
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
               fontWeight: 900,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -36,7 +31,7 @@ const HomePage = () => {
             Book Buddy
           </Typography>
 
-        <Stack spacing={2} direction="row" style={{paddingLeft:"60%"}}>
+        <Stack spacing={2} direction="row" style={{paddingLeft:"25%"}}>
         <Button 
             variant="contained" 
             onClick={()=> navigate("/login")}>
@@ -57,4 +52,3 @@ const HomePage = () => {
 
 }
 export default HomePage
-
