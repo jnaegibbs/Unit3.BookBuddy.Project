@@ -14,6 +14,7 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [success,setSuccess] = useState("");
     const navigate = useNavigate();
     
 
@@ -28,7 +29,7 @@ export default function Register() {
                 password: password});
 
                 console.log(response);
-        
+                setSuccess(response.data.message)
          {error && <p>unable to perform submission</p>}
    
 
@@ -40,7 +41,7 @@ export default function Register() {
         <>
     
         {error && <p>Unable to register</p>}
-
+       
         <Box component="form"
         sx={{ m: 10, width: 500, maxWidth: "100%" }}
         autoComplete="off">
@@ -49,7 +50,7 @@ export default function Register() {
           Register
         </Typography>
             
-            
+        <Typography variant='h6' color="success">{success && <p>{success}</p>}   </Typography>
         <TextField label="First Name"
           variant="filled"
           fullWidth

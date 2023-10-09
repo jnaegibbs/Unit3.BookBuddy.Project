@@ -69,14 +69,14 @@ const Books = () => {
                         }}
                      >
                         {filteredBooks && filteredBooks.map((book) => (
-                            <div>
+                            <div key={book.id}>
                                 <Card sx={{ marginBottom: 10, marginRight: 10, padding: 5, width: 300}}>
                                     <CardMedia sx={{height: 400}}
                                         component="img"
                                         alt={data.name}
                                         image={book.coverimage} />
                                     <CardContent 
-                                        key={book.id}>{book.title}
+                                        >{book.title}
                                     </CardContent>
                                     <Button
                                         variant="contained"
