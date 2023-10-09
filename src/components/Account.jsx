@@ -4,7 +4,7 @@ import { Box ,Button,Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Books from "./Books";
 
-import {Reservation} from "./Reservation";
+import Reservation from "./Reservation";
 
 const Account = () => {
  
@@ -44,19 +44,19 @@ const Account = () => {
           Checked out Books here
          </Typography>
         
-            <Typography variant="h6"> No Books Found</Typography>
-          
-
-
-          <Reservation />
+            <Typography variant="h6"><Reservation/></Typography>
+        
         </div>
       )}
+      
         
 
     
         
         </Box>
+    
         <Books/>
+      
     </>
     )
 }

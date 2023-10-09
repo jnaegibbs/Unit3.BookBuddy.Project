@@ -84,9 +84,7 @@ const bookBuddyApi = createApi({
       query: (reservationId) => ({
         url: `/api/reservations/${reservationId}`,
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        
       }),
     }),
   }),
