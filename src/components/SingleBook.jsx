@@ -60,10 +60,12 @@ const SingleBook = () => {
                         <h4>{data.book.author}</h4>
                         <h4>{data.book.description}</h4>
                     </CardContent>
+                    {token && 
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={() =>{checkOut()}}>Add to Cart</Button>
+                        onClick={() =>{checkOut()}}>Check Out</Button>
+                    }
                     
                 </Card>}
         </>
