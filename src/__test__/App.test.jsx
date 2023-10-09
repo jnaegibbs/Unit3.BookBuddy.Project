@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import '@testing-library/jest-dom'
 import { render, fireEvent, getByTestId } from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
 import Books from "../components/Books";
