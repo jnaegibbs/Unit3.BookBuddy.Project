@@ -1,32 +1,22 @@
-/* TODO - add your code to create a functional React component that renders a login form */
-
-/* TODO - add your code to create a functional React component that renders a login form */
-
 import { React, useState } from "react";
 import { useLoginMutation } from "./API/bookBuddyApi";
 import { useNavigate } from "react-router-dom";
-import {useSelector} from "react-redux";
-
+import { useSelector } from "react-redux";
 
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [error,setError] = useState("")
-  const [success,setSuccess] = useState(null);
 
-  const token = useSelector(state => state.token)
-  console.log("TOKEN: ", token);
-  
+  const [success, setSuccess] = useState(null);
+
   const navigate = useNavigate();
 
-
-  const [login,{error}] = useLoginMutation();
+  const [login, { error }] = useLoginMutation();
 
   async function loginSubmit(event) {
     event.preventDefault();
@@ -36,17 +26,12 @@ export default function Login() {
       password: password,
     });
 
-    console.log(response);
-    setSuccess(response.data.message)
-  
+    setSuccess(response.data.message);
+
     setEmail("");
     setPassword("");
-    navigate('/')
-   
-    
+    navigate("/");
   }
-
-  
 
   return (
     <>
@@ -56,13 +41,14 @@ export default function Login() {
         autoComplete="off"
       >
         <Typography variant="h5" color="primary" gutterBottom>
-           Login
+          Login
           {success && <p>{success}</p>}
         </Typography>
 
-        <Typography variant="h6" color="error">{error && <p> {error.message} </p>}</Typography>
-       
-         
+        <Typography variant="h6" color="error">
+          {error && <p> {error.message} </p>}
+        </Typography>
+
         <TextField
           label="Email"
           variant="filled"
@@ -84,7 +70,7 @@ export default function Login() {
         />
         <br />
         <br />
-        <Button variant="contained" color="primary" onClick= {loginSubmit}>
+        <Button variant="contained" color="primary" onClick={loginSubmit}>
           Submit
         </Button>
 

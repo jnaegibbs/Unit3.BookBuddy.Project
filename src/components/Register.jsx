@@ -1,96 +1,101 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
-import {React, useState } from 'react';
-import {useRegisterMutation} from './API/bookBuddyApi'
-import { useNavigate } from 'react-router-dom';
+import { React, useState } from "react";
+import { useRegisterMutation } from "./API/bookBuddyApi";
+import { useNavigate } from "react-router-dom";
 
-import {TextField} from "@mui/material/";
-import {Box} from "@mui/material/";
+import { TextField } from "@mui/material/";
+import { Box } from "@mui/material/";
 import { Typography } from "@mui/material";
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
 
 export default function Register() {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [success,setSuccess] = useState("");
-    const navigate = useNavigate();
-    
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
-    const [register] = useRegisterMutation();
+  const [register] = useRegisterMutation();
 
-    async function registerSubmit(event){
-        event.preventDefault();
+  async function registerSubmit(event) {
+    event.preventDefault();
 
-        const response = await register({firstname: firstName, 
-                lastname: lastName,
-                email: email, 
-                password: password});
+    const response = await register({
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+    });
 
-                console.log(response);
-                setSuccess(response.data.message)
-         {error && <p>unable to perform submission</p>}
-   
-
-        
+    console.log(response);
+    setSuccess(response.data.message);
+    {
+      error && <p>unable to perform submission</p>;
     }
+  }
 
+  return (
+    <>
+      {error && <p>Unable to register</p>}
 
-    return (
-        <>
-    
-        {error && <p>Unable to register</p>}
-       
-        <Box component="form"
+      <Box
+        component="form"
         sx={{ m: 10, width: 500, maxWidth: "100%" }}
-        autoComplete="off">
-        
+        autoComplete="off"
+      >
         <Typography variant="h5" color="primary" gutterBottom>
           Register
         </Typography>
-            
-        <Typography variant='h6' color="success">{success && <p>{success}</p>}   </Typography>
-        <TextField label="First Name"
+
+        <Typography variant="h6" color="success">
+          {success && <p>{success}</p>}{" "}
+        </Typography>
+        <TextField
+          label="First Name"
           variant="filled"
           fullWidth
           required
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-           />
-                
-         <br/>
-         <br/>
+        />
 
-         <TextField label="Last Name"
+        <br />
+        <br />
+
+        <TextField
+          label="Last Name"
           variant="filled"
           fullWidth
           required
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-           />
-        
+        />
+
         <br />
         <br />
-            
-        <TextField label="Email"
+
+        <TextField
+          label="Email"
           variant="filled"
           fullWidth
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-           />
-        
+        />
+
         <br />
         <br />
 
-        <TextField label="Password"
+        <TextField
+          label="Password"
           variant="filled"
           fullWidth
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-           />
+        />
         <br />
         <br />
 
@@ -103,11 +108,10 @@ export default function Register() {
           color="primary"
           onClick={() => navigate("/")}
           style={{ float: "right" }}
-          >
+        >
           Back
         </Button>
-
-        </Box>
-        </>
-    )
+      </Box>
+    </>
+  );
 }

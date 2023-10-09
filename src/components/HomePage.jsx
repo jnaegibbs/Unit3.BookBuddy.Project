@@ -18,7 +18,9 @@ const HomePage = () => {
     <>
       <Container sx={{ marginLeft: "8%" }}>
         <Stack spacing={2} direction="row" mt={5}>
-          <IconButton onClick={()=>navigate('/')}><AutoStoriesSharpIcon fontSize="large" /></IconButton>
+          <IconButton onClick={() => navigate("/")}>
+            <AutoStoriesSharpIcon fontSize="large" />
+          </IconButton>
           <Typography
             variant="h4"
             noWrap
@@ -38,15 +40,24 @@ const HomePage = () => {
           <Stack spacing={2} direction="row" style={{ paddingLeft: "25%" }}>
             {token === null ? (
               <>
-              <Button variant="contained" onClick={() => navigate("/login") }>
-                Login
-              </Button>
-               <Button variant="contained" onClick={() => navigate("/register")}>
-               Register
-             </Button>
-             </>
+                <Button variant="contained" onClick={() => navigate("/login")}>
+                  Login
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => navigate("/register")}
+                >
+                  Register
+                </Button>
+              </>
             ) : (
-              <Button variant="contained" onClick={() =>{dispatch(setToken({token:null}));navigate('/')} }>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  dispatch(setToken({ token: null }));
+                  navigate("/");
+                }}
+              >
                 Logout
               </Button>
             )}
@@ -54,8 +65,6 @@ const HomePage = () => {
             <Button variant="contained" onClick={() => navigate("/Account")}>
               My profile
             </Button>
-
-           
           </Stack>
         </Stack>
       </Container>

@@ -14,7 +14,8 @@ import {useSelector} from 'react-redux'
 
 const SingleBook = () => {
     const {id:bookId} = useParams();
-    const { data, error, isLoading } = useFetchBookByIdQuery(bookId)
+    const { data, error, isLoading } = useFetchBookByIdQuery(bookId);
+    
     const navigate = useNavigate();
     console.log(bookId);
 
@@ -28,6 +29,7 @@ const SingleBook = () => {
         const response = await updateBookAvailability( bookId, available
         );
         console.log("book available", response)
+        navigate('/Account');
     }
 
 

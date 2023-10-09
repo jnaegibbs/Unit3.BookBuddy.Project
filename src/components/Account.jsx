@@ -26,7 +26,7 @@ const Account = () => {
     return (
         <>
       
-    <Box sx={{ m: 10, width: 500, maxWidth: "100%",border:"1px solid gray",padding:"20px",borderRadius:"10px" }}>
+    <Box sx={{ m: 10, width: 800, maxWidth: "100%",border:"1px solid gray",padding:"20px",borderRadius:"10px" }}>
       
       {(data &&token) ? (
         <div>
@@ -55,7 +55,7 @@ const Account = () => {
         
 
     
-        <Button variant="contained" onClick={()=>navigate('/')} style={{margin:"5% 2%"}}>Back</Button>
+        <Button variant="contained" onClick={()=>navigate('/')} style={{float:"right",margin:"5% 2%"}}>Back</Button>
         </Box>
 
     
