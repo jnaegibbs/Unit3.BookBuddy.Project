@@ -7,8 +7,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import { Grid } from '@mui/material';
-
+import { Grid, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const Books = () => {
 
@@ -36,11 +36,21 @@ const Books = () => {
 
             <div>
                 <label>
+                    <Typography 
+                        variant='h6'
+                        sx={{
+                            marginLeft: "10%",
+                            paddingBottom: 2,
+                            width: "40%",
+                        }}
+                        >
+                        Search for books here:
+                    </Typography>
                     <TextField
                         type="text"
                         placeholder="Search"
                         onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
-                        style={{ marginLeft: "10%", width: "40%", padding: "2%" }}
+                        style={{ marginLeft: "10%", width: "40%", paddingBottom: "5%" }}
                     />
                 </label>
             </div>
@@ -49,37 +59,41 @@ const Books = () => {
             {error ? (
                 <p>{error}</p>
             ) : (
-                <Grid
-                    container
-                    spacing={2}
-                    columns={16}
-                    direction="column"
-                    justify="flex-start"
-                    alignItems="flex-start"
-                >
-                    <Grid item xs={12} sm={6} md={3} key={data.bookId}>
+                
+
+                    <Grid item key={data.bookId}
+                        sx={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            marginLeft: "10%"
+                        }}
+                     >
                         {filteredBooks && filteredBooks.map((book) => (
-                            <div>
-                                <Card sx={{ m: 10, padding: 5, width: 300, maxWidth: "100%" }}>
-                                    <CardMedia
+                            <div key={book.id}>
+                                <Card sx={{ marginBottom: 10, marginRight: 10, padding: 5, width: 300}}>
+                                    <CardMedia sx={{height: 400}}
                                         component="img"
                                         alt={data.name}
                                         image={book.coverimage} />
-                                    <CardContent
-                                        key={book.id}>{book.title}
+                                    <CardContent 
+                                        >{book.title}
                                     </CardContent>
                                     <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={() => navigate(`/books/${book.id}`)}>More Info</Button>
-                                    
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => navigate('/Account') }
+                                        style={{float:"right"}}>Add to Cart</Button>
                                        
                                 </Card>
                             </div>
 
                         ))}
                     </Grid>
-                </Grid>
+
             )
 
             }

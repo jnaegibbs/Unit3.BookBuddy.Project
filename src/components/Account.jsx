@@ -2,12 +2,12 @@ import { React } from "react";
 import { useFetchUserQuery } from "./API/bookBuddyApi";
 import { Box ,Button,Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Books from "./Books";
+import { useSelector } from "react-redux";
 
 import Reservation from "./Reservation";
 
 const Account = () => {
- 
+  const token = useSelector(state=>state.token)
   const navigate = useNavigate();
   const { data, error, isLoading } =  useFetchUserQuery();
 
@@ -25,10 +25,10 @@ const Account = () => {
     
     return (
         <>
-       <Button variant="contained" onClick={()=>navigate('/')} style={{margin:"2% 5% "}}>Back</Button>
+      
     <Box sx={{ m: 10, width: 500, maxWidth: "100%",border:"1px solid gray",padding:"20px",borderRadius:"10px" }}>
        {error && <Typography variant="h5">Please Sign In for Details</Typography>}
-      {data && (
+      {(data &&token) ? (
         <div>
          <Typography variant="h5" color="primary" gutterBottom>
           User Details
@@ -47,16 +47,22 @@ const Account = () => {
             <Typography variant="h6"><Reservation/></Typography>
         
         </div>
+
       )}
-      
+     
+      ):<Typography variant="h5">Please Sign In for Details</Typography>}
+
         
 
     
-        
+        <Button variant="contained" onClick={()=>navigate('/')} style={{margin:"5% 2%"}}>Back</Button>
         </Box>
+
     
-        <Books/>
       
+      
+
+        
     </>
     )
 }
