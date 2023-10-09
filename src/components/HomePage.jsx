@@ -1,54 +1,65 @@
-import Books from './Books';
-import {Link} from "react-router-dom"; 
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
-import { useNavigate } from 'react-router-dom';
-
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import AutoStoriesSharpIcon from "@mui/icons-material/AutoStoriesSharp";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setToken } from "./API/tokenSlice";
+import { IconButton } from "@mui/material";
 
 const HomePage = () => {
   const navigate = useNavigate();
-   return (
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
+  return (
     <>
-    <Container sx={{marginLeft: "8%"}}>
-    <Stack spacing={2} direction="row" mt={5}>
-    <AutoStoriesSharpIcon/>
-    <Typography variant="h4"
+      <Container sx={{ marginLeft: "8%" }}>
+        <Stack spacing={2} direction="row" mt={5}>
+          <IconButton onClick={()=>navigate('/')}><AutoStoriesSharpIcon fontSize="large" /></IconButton>
+          <Typography
+            variant="h4"
             noWrap
             component="a"
             sx={{
               marginLeft: "10%",
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: "none", md: "flex" },
               fontWeight: 900,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Book Buddy
           </Typography>
 
-        <Stack spacing={2} direction="row" style={{paddingLeft:"25%"}}>
-        <Button 
-            variant="contained" 
-            onClick={()=> navigate("/login")}>
-        Login</Button>
+          <Stack spacing={2} direction="row" style={{ paddingLeft: "25%" }}>
+            {token === null ? (
+              <>
+              <Button variant="contained" onClick={() => navigate("/login") }>
+                Login
+              </Button>
+               <Button variant="contained" onClick={() => navigate("/register")}>
+               Register
+             </Button>
+             </>
+            ) : (
+              <Button variant="contained" onClick={() =>{dispatch(setToken({token:null}));navigate('/')} }>
+                Logout
+              </Button>
+            )}
 
+            <Button variant="contained" onClick={() => navigate("/Account")}>
+              My profile
+            </Button>
 
-        <Button 
-          variant="contained"
-          onClick={()=> navigate("/register")}
-          >Register
-        </Button>
+           
+          </Stack>
         </Stack>
-        </Stack>
-    </Container>
-   <Books/>
+      </Container>
     </>
-   )
-
-}
-export default HomePage
+  );
+};
+export default HomePage;

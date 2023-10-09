@@ -6,6 +6,7 @@ import Login from './components/Login'
 import HomePage from './components/HomePage'
 import { useDispatch, useSelector } from 'react-redux'
 import Account from './components/Account'
+import Books from './components/Books'
 
 function App() {
   
@@ -13,9 +14,10 @@ function App() {
   return (
     <>
     <BrowserRouter>
+       <HomePage/>
       <Routes>
         <Route path="/Account" element={<Account/>}/>
-        <Route path="/" element={<HomePage/>} /> 
+        <Route path="/" element={<Books/>} /> 
         <Route path="/books/:id" element={<SingleBook />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
